@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Example</title>
+  <style>
+    #animationBox {
+      width: 400px;
+      height: 400px;
+      background-color: rgb(43, 18, 102);
+      position: relative;
+    }
+    
+    #animationBox .animationElement {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(255, 0, 149);
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation-name: move;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes move {
+      0% {
+        top: 0;
+        left: 0;
+      }
+      50% {
+        top: 300px;
+        left: 300px;
+      }
+      100% {
+        top: 0;
+        left: 0;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div id="animationBox"></div>
+  <h1>CLICK THE BUTTON TO HANDLE ANIMATION!</h1>
+  <button id="startButton">Start Animation</button>
+  <button id="stopButton">Stop Animation</button>
+  
+  
+  <script>
+    const animationBox = document.getElementById('animationBox');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    let animationInterval;
+    
+    function startAnimation() {
+      animationInterval = setInterval(() => {
+        animationBox.innerHTML = '<div class="animationElement"></div>';
+      }, 2000);
+    }
+    
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      animationBox.innerHTML = '';
+    }
+    
+    startButton.addEventListener('click', startAnimation);
+    stopButton.addEventListener('click', stopAnimation);
+  </script>
+</body>
+</html>
